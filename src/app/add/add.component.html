@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="myForm">
+      <div class="form-group">
+        <label class="col-md-4">Person Name</label>
+        <input type="text" class="form-control" formControlName="person_name" #person_name>
+      </div>
+      <div *ngIf="myForm.controls['person_name'].invalid && (myForm.controls['person_name'].dirty || myForm.controls['person_name'].touched)" class="alert alert-danger">
+        <div *ngIf="myForm.controls['person_name'].errors.required">
+          Business name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Business Name</label>
+        <input type="text" class="form-control" formControlName="business_name" #business_name>
+      </div>
+      <div *ngIf="myForm.controls['business_name'].invalid && (myForm.controls['business_name'].dirty || myForm.controls['business_name'].touched)" class="alert alert-danger">
+        <div *ngIf="myForm.controls['business_name'].errors.required">
+          Person name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Business Reg Num</label>
+        <input type="text" class="form-control" formControlName="business_reg_num" #business_reg_num>
+      </div>
+      <div *ngIf="myForm.controls['business_reg_num'].invalid && (myForm.controls['business_reg_num'].dirty || myForm.controls['business_reg_num'].touched)" class="alert alert-danger">
+        <div *ngIf="myForm.controls['business_reg_num'].errors.required">
+          Business registry number is required!
+        </div>
+      </div>
+      <button (click)="addBusiness(person_name.value, business_name.value, business_reg_num.value)" [disabled]="myForm.pristine || myForm.invalid" class="btn btn-primary">Add Business</button>
+    </form>
+  </div>
+</div>

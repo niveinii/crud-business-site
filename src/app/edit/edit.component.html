@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angularForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Person Name</label>
+        <input type="text" class="form-control" formControlName="person_name" #person_name>
+      </div>
+      <div *ngIf="angularForm.controls['person_name'].invalid && (angularForm.controls['person_name'].dirty || angularForm.controls['person_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angularForm.controls['person_name'].errors.required">
+          Business name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Business Name</label>
+        <input type="text" class="form-control" formControlName="business_name" #business_name>
+      </div>
+      <div *ngIf="angularForm.controls['business_name'].invalid && (angularForm.controls['business_name'].dirty || angularForm.controls['business_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angularForm.controls['business_name'].errors.required">
+          Person name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Business Reg Num</label>
+        <input type="text" class="form-control" formControlName="business_reg_num" #business_reg_num>
+      </div>
+      <div *ngIf="angularForm.controls['business_reg_num'].invalid && (angularForm.controls['business_reg_num'].dirty || angularForm.controls['business_reg_num'].touched)" class="alert alert-danger">
+        <div *ngIf="angularForm.controls['business_reg_num'].errors.required">
+          Business registry number is required!
+        </div>
+      </div>
+      <button type="button" (click)="updateBusiness(person_name.value, business_name.value, business_reg_num.value)" [disabled]="angularForm.invalid" class="btn btn-primary">Update Business</button>
+    </form>
+  </div>
+</div>
